@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Smart Traffic - Report
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1 class = "ms-2">Traffic Report</h1>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">No</th>
+            <th scope="col">Report ID</th>
+            <th scope="col">Decription</th>
+            <th scope="col">Date Reported</th>
+            <th scope="col">Category</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for item in items %}
+            <tr>
+                <td>{{item.No}}</td>
+                <td>{{item.ID}}</td>
+                <td>{{item.Description}}</td>
+                <td>{{item.Date}}</td>
+                <td>{{item.Category}}</td>
+                <td>
+                    <button class="btn btn-outline btn-primary">Update</button>
+                    <button class="btn btn-outline btn-success">Done</button>
+                    <button class="btn btn-outline btn-danger">Reject</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
