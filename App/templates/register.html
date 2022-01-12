@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Smart Traffic - Register
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <form method = "POST", class="form-register ms-5 me-5 fs-5" style="color:white" >
+            {{ form.hidden_tag() }}
+            <br>
+            <h1 class= "h3 mb-5 font-weight-normal, text-center">Please Create Your Account</h1>
+            {{form.Username.label()}}
+            {{form.Username(class="form-control", placeholder="Username")}}
+            <br>
+            {{form.Email.label()}}
+            {{form.Email(class="form-control", placeholder="Email Address")}}
+            <br>
+            {{form.Password_1.label()}}
+            {{form.Password_1(class="form-control", placeholder="Password")}}
+            <br>
+            {{form.Password_2.label()}}
+            {{form.Password_2(class="form-control", placeholder="Confirm Password")}}
+            <br>
+
+            <div class="checkbox mb-3 text-center">
+                <h6>Already have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_Page') }}">Login</a>
+            </div>
+            <br>
+            <div class="d-grid gap-2 col-2 mx-auto">
+                {{form.Submit(class="btn btn-primary btn-block btn-lg")}}
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

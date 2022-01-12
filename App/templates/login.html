@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Smart Traffic - Login
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <form method="POST" class="form-signin" style="color:white">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal text-center">
+                Please Login
+            </h1>
+            <br>
+            {{ form.Username.label() }}
+            {{ form.Username(class="form-control", placeholder="Username") }}
+            <br>
+            {{ form.Password.label() }}
+            {{ form.Password(class="form-control", placeholder="Password") }}
+            <br>
+
+            <div class="checkbox mb-3 text-center">
+                <h6>Do not have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('register_Page') }}">Register</a>
+                <br>
+                <br>
+            </div>
+
+            <div class="d-grid gap-2 col-2 mx-auto">
+                {{form.Submit(class="btn btn-primary btn-block btn-lg")}}
+            </div>
+        </form>
+    </div>
+{% endblock %}
