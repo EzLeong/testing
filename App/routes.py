@@ -130,6 +130,7 @@ def logout_Page():
 @app.route('/delete/<int:No>')
 def delete_Item(No):
     items = Report.query.get_or_404(No)
+    x = items.ID
 
     try:
         db.session.delete(items)
@@ -165,7 +166,7 @@ def delete_Item(No):
         db.session.query(Final).delete()
         db.session.commit()
 
-        flash("Successfully deleted", category='success')
+        flash(f'Successfully deleted report: {x}', category='success')
         return redirect(url_for('admin_Page'))
 
     except:
@@ -187,11 +188,11 @@ def update_Item(No):
 
         try:
             db.session.commit()
-            flash(f"You've updated a report {items.No}", category = "success")
+            flash(f"You've updated report: {items.ID}", category = "success")
             return redirect(url_for('admin_Page'))
 
         except:
-            flash("There's a problem updating that task", category='danger')
+            flash("There's a problem updating that report", category='danger')
 
     else:
         return render_template('update.html', items=items)

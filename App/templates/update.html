@@ -35,7 +35,15 @@
                         <td>{{items.Category}}</td>
                         <td>{{items.Area}}</td>
                         <td>{{items.Description}}</td>
-                        <td>{{items.Status}}</td>
+                        <td>
+                        {% if items.Status == "Pending"%}
+                                <button class="btn btn-outline btn-warning">Pending</button>
+                        {% elif items.Status == "Complete"%}
+                            <button class="btn btn-outline btn-success">Complete</button>
+                        {% else %}
+                            <button class="btn btn-outline btn-danger">{{items.Status}}</button>
+                        {% endif %}
+                        </td>
                     </tr>
             </tbody>
         </table>
