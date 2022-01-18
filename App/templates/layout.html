@@ -68,7 +68,7 @@
                     {% endif %}
                     <form method="POST" class="d-flex" action="{{url_for('search_Page')}}">
                         {{ form.hidden_tag() }}
-                        {{form.Searched(class="form-control me-3", placeholder="Search Report ID")}}
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Searched" name="Searched">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </ul>
