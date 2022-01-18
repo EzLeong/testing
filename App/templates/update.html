@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Smart Traffic - Update
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1 class = "text-center mt-3"><span class="badge rounded-pill bg-light text-dark">Traffic Report</span></h1>
+<div class="row" style="margin-top:20px; margin-left:20px">
+    <div class="col-8"><p class= "mt-5">
+        <h2 class="text-center mt-5">Report to Edit</h2>
+        <table class="table table-hover table-dark text-center">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">No</th>
+                    <th scope="col">Report ID</th>
+                    <th scope="col">Date Reported</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Decription</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                    <tr>
+                        <td>{{items.No}}</td>
+                        <td>{{items.ID}}</td>
+                        <td>{{items.Date}}</td>
+                        <td>{{items.Category}}</td>
+                        <td>{{items.Area}}</td>
+                        <td>{{items.Description}}</td>
+                        <td>{{items.Status}}</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4 mt-5">
+        <h2 class="text-center"> Update Changes </h2>
+        <br>
+        <form class="container" method="POST">
+            <div class="form-floating">
+                <select class="form-select align-middle text-center" aria-label="Floating label select example" name="selected_Area", id="selected_Area">
+                    <option selected>Area</option>
+                    <option value="Johor">Johor</option>
+                    <option value="Kedah">Kedah</option>
+                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                    <option value="Kelantan">Kelantan</option>
+                    <option value="Labuan">Labuan</option>
+                    <option value="Melaka">Melaka</option>
+                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                    <option value="Pahang">Pahang</option>
+                    <option value="Perak">Perak</option>
+                    <option value="Perlis">Perlis</option>
+                    <option value="Pulau Pinang">Pulau Pinang</option>
+                    <option value="Perak">Perak</option>
+                    <option value="Perlis">Perlis</option>
+                    <option value="Sabah">Sabah</option>
+                    <option value="Sarawak">Sarawak</option>
+                    <option value="Selangor">Selangor</option>
+                    <option value="Terengganu">Terengganu</option>
+                    <option value="Wilayah Persekutuan">Wilayah Persekutuan</option>
+                </select>
+                <label style="color:black" for="selected_Area">Update Area</label>
+            </div>
+            <br>
+            <div class="form-floating">
+                <select class="form-select align-middle text-center" aria-label="Floating label select example" name="selected_Category" id="selected_Category">
+                    <option selected>Category</option>
+                    <option value="Accident">Accident</option>
+                    <option value="Traffic Light Breakdown">Traffic Light Breakdown</option>
+                    <option value="Potholes">Potholes</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label style="color:black" for="selected_Category">Update Category</label>
+            </div>
+            <br>
+            <div class="form-floating">
+                <select class="form-select align-middle text-center" aria-label="Floating label select example" name="selected_Status" id="selected_Status">
+                    <option selected>Status</option>
+                    <option value="Complete">Completed</option>
+                    <option value="Unable to Complete">Unable to Complete</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Decline">Declined</option>
+                </select>
+                <label style="color:black" for="selected_Status">Update Status</label>
+            </div>
+            <br>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" name="selected_Description" id="selected_Description"></textarea>
+                <label style="color:black" for="selected_Description">Remarks</label>
+            </div>
+            <br>
+            <br>
+            
+            <input type ="submit" value="Update">
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

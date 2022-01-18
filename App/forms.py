@@ -32,3 +32,8 @@ class ReportForm(FlaskForm):
     Category = StringField(label='Category', validators=[DataRequired()])
     Description = StringField(label='Description', validators=[DataRequired()])
     Submit = SubmitField(label='Submit')
+    Status = StringField(label='Status', validators=[DataRequired()])
+
+class SearchForm(FlaskForm):
+    Searched = StringField(label='Searched', validators=[DataRequired()])
+    Submit =  SubmitField(label='Submit')

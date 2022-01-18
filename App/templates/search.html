@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Smart Traffic - Admin
+    Smart Traffic - Search
 {% endblock %}
 
 {% block head %}
@@ -23,12 +23,11 @@
                 <th scope="col">Area</th>
                 <th scope="col">Decription</th>
                 <th scope="col">Status</th>
-                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             <!-- Your rows inside the table HERE: -->
-            {% for item in items %}
+            {% for item in Searched %}
                 <tr>
                     <td>{{item.No}}</td>
                     <td>{{item.ID}}</td>
@@ -37,21 +36,10 @@
                     <td>{{item.Area}}</td>
                     <td>{{item.Description}}</td>
                     <td>{{item.Status}}</td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                              Action
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/update/{{item.No}}">Update</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/delete/{{item.No}}">Delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </p>
+
 {% endblock %}

@@ -1,7 +1,8 @@
+from asyncio.windows_events import NULL
 from App import app
 from flask import render_template, redirect, url_for, flash, request
 from App.models import Report, User, Final
-from App.forms import RegisterForm, LoginForm, ReportForm
+from App.forms import RegisterForm, LoginForm, ReportForm, SearchForm
 from App import db
 from flask_login import login_user, logout_user, login_required
 from datetime import datetime
@@ -11,10 +12,35 @@ import random
 def ran_gen(size, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for x in range(size))
 
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form) 
+
 @app.route('/')
 @app.route('/home')
 def home_Page():
     return render_template('home.html')
+
+@app.route('/search', methods=['POST'])
+def search_Page():
+    form = SearchForm()
+    items = Report.query.all()
+    if form.validate_on_submit():
+
+        if form.Searched.data != "":
+            searched_Inputs = form.Searched.data
+            searched_Items = "%{}%".format(searched_Inputs)
+            Searched = Report.query.filter(Report.ID.like(searched_Items)).all()
+
+            flash(f'Successfully searched for the report', category='success')
+            return render_template("search.html", form=form, items=items, Searched=Searched)
+
+        else:
+            flash(f'Search Invalid! Please try again!', category='danger')
+
+    return render_template("search.html", form=form, items=items)
+
 
 @app.route('/report', methods=['GET','POST'])
 def report_Page():
@@ -39,38 +65,7 @@ def report_Page():
         db.session.add(report_to_create)
         db.session.commit()
 
-        temp_items = Report.query.all()
-
-        for item in temp_items:
-            temp_to_create = Final(Area = item.Area,
-                                Category = item.Category,
-                                Description = item.Description,
-                                ID = item.ID,
-                                Date = item.Date,
-                                Status = item.Status)
-            db.session.add(temp_to_create)
-            db.session.commit()
-
-
-        new_items = Final.query.all()
-        db.session.query(Report).delete()
-        db.session.commit()
-
-        for item in new_items:
-            final_to_create = Report(Area = item.Area,
-                                Category = item.Category,
-                                Description = item.Description,
-                                ID = item.ID,
-                                Date = item.Date,
-                                Status = item.Status)
-            db.session.add(final_to_create)
-            db.session.commit()
-        
-
-        db.session.query(Final).delete()
-        db.session.commit()
-
-        flash(f"You've submitted a report {final_to_create.ID}", category = "success")
+        flash(f"You've submitted a report {report_to_create.ID}", category = "success")
         return redirect(url_for('report_Page'))
 
     return render_template('report.html', items=items, form=form)
@@ -120,6 +115,9 @@ def login_Page():
             login_user(attempted_user)
             flash(f'Success! You are logged in as: {attempted_user.Username}', category='success')
             return redirect(url_for('admin_Page'))
+
+    else:
+        flash('Failure in Login invalid!', category='danger')
 
     return render_template('login.html', form=form)
 
@@ -174,4 +172,29 @@ def delete_Item(No):
         flash("There's a problem deleting that task", category='danger')
 
     return render_template('admin.html')
+
+@app.route('/update/<int:No>', methods=['GET','POST'])
+def update_Item(No):
+    items = Report.query.get_or_404(No)
+    form = ReportForm()
+
+
+    if request.method == 'POST':
+        items.Area = request.form['selected_Area']
+        items.Category = request.form['selected_Category']
+        items.Description = request.form['selected_Description']
+        items.Status = request.form['selected_Status']
+
+        try:
+            db.session.commit()
+            flash(f"You've updated a report {items.No}", category = "success")
+            return redirect(url_for('admin_Page'))
+
+        except:
+            flash("There's a problem updating that task", category='danger')
+
+    else:
+        return render_template('update.html', items=items)
+
+    return render_template('admin.html',items=items, form=form)
 
