@@ -19,9 +19,16 @@ class RegisterForm(FlaskForm):
     Email = StringField(label='Email Address', validators=[Email(), DataRequired()])
     Password_1 = PasswordField(label='Password', validators=[Length(min=6), DataRequired()])
     Password_2 = PasswordField(label='Confirm Password', validators=[EqualTo('Password_1'), DataRequired()])
+    CODE = StringField(label='Admin Code', validators=[DataRequired()])
     Submit = SubmitField(label='Create Account')
 
 class LoginForm(FlaskForm):
     Username = StringField(label='Username', validators=[DataRequired()])
     Password = PasswordField(label='Password', validators=[DataRequired()])
     Submit = SubmitField(label='Sign In')
+
+class ReportForm(FlaskForm):
+    Area = StringField(label='Area', validators=[DataRequired()])
+    Category = StringField(label='Category', validators=[DataRequired()])
+    Description = StringField(label='Description', validators=[DataRequired()])
+    Submit = SubmitField(label='Submit')
