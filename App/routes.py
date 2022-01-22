@@ -4,7 +4,7 @@ from flask import render_template, redirect, url_for, flash, request
 from App.models import Report, User, Final
 from App.forms import RegisterForm, LoginForm, ReportForm, SearchForm
 from App import db
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from datetime import datetime
 import string
 import random
@@ -43,6 +43,7 @@ def search_Page():
 
 
 @app.route('/report', methods=['GET','POST'])
+@login_required
 def report_Page():
     items = Report.query.all()
     form = ReportForm()
@@ -73,19 +74,24 @@ def report_Page():
 @app.route('/admin')
 @login_required
 def admin_Page():
-    items = Report.query.all()
+    if current_user.Username != "Admin123" :
+        flash(f"You're not authorized to access the page!", category = "danger")
+        return redirect(url_for('home_Page'))
+    
+    else:
+        items = Report.query.all()
+        return render_template('admin.html', items=items)
 
-    return render_template('admin.html', items=items)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_Page():
     form = RegisterForm()
-    Admin_Code = "ADMIN123"
+    Admin_Code = "CONFIRM"
     if form.validate_on_submit():
         if form.CODE.data == Admin_Code:
             user_to_create = User(Username = form.Username.data,
                                 Email = form.Email.data,
-                                password = form.Password_1.data)
+                                Password = form.Password_1.data)
             db.session.add(user_to_create)
             db.session.commit()
 
@@ -109,15 +115,16 @@ def login_Page():
     form = LoginForm()
     if form.validate_on_submit():
         attempted_user = User.query.filter_by(Username=form.Username.data).first()
-        if attempted_user and attempted_user.check_password_correction(
-                attempted_password=form.Password.data
-        ):
+        if attempted_user.Password == form.Password.data:
+            """ and attempted_user.check_password_correction(
+                    attempted_password=form.Password.data
+            ):"""
             login_user(attempted_user)
             flash(f'Success! You are logged in as: {attempted_user.Username}', category='success')
-            return redirect(url_for('admin_Page'))
+            return redirect(url_for('home_Page'))
 
-    else:
-        flash('Failure in Login invalid!', category='danger')
+        else:
+                flash('Failure in Login invalid!', category='danger')
 
     return render_template('login.html', form=form)
 

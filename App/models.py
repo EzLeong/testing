@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     Email = db.Column(db.String(length=50), nullable=False, unique=True)
     Password = db.Column(db.String(length=60), nullable=False)
 
-    @property
+    """ @property
     def password(self):
         return self.password
 
@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
         self.Password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
     def check_password_correction(self, attempted_password):
-        return bcrypt.check_password_hash(self.Password, attempted_password)
+        return bcrypt.check_password_hash(self.Password, attempted_password)  """
 
     def get_id(self):
            return (self.ID)
