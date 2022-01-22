@@ -1,7 +1,7 @@
 from asyncio.windows_events import NULL
 from App import app
 from flask import render_template, redirect, url_for, flash, request
-from App.models import Report, User, Final
+from App.models import Report, User, Final, Emergency
 from App.forms import RegisterForm, LoginForm, ReportForm, SearchForm
 from App import db
 from flask_login import login_user, logout_user, login_required, current_user
@@ -21,6 +21,11 @@ def base():
 @app.route('/home')
 def home_Page():
     return render_template('home.html')
+
+@app.route('/emergency')
+def emergency_Page():
+    items = Emergency.query.all()
+    return render_template('emergency.html', items=items)
 
 @app.route('/search', methods=['POST'])
 def search_Page():

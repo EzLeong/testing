@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Smart Traffic - Track
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<br>
+<h1 class = "text-center mt-5">Traffic Report</h1>
+<p class= "mt-5">
+    <table class="table table-hover table-dark text-center">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope='col'>No</th>
+                <th scope="col">Car Plate</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+                <tr>
+                    <td>{{item.No}}</td>
+                    <td>{{item.car_Plate}}</td>
+                    <td>
+                        {% if item.Status == "ON"%}
+                            <button class="btn btn-block btn-danger">Emergency</button>
+                        {% elif item.Status == "OFF"%}
+                            <button class="btn btn-block btn-success">Non-Emergency</button>
+                        {% else %}
+                            <button class="btn btn-block btn-warning">{{item.Status}}</button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</p>
+{% endblock %}

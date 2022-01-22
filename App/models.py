@@ -31,6 +31,10 @@ class User(db.Model, UserMixin):
     def get_id(self):
            return (self.ID)
 
+class Emergency(db.Model):
+    No = db.Column(db.Integer(), nullable=False, unique=True, primary_key=True)
+    car_Plate = db.Column(db.String(), nullable=False)
+    Status = db.Column(db.String(), nullable=False)
 
 class Report(db.Model):
     No = db.Column(db.Integer(), nullable=False, unique=True, primary_key=True)
