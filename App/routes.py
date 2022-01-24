@@ -22,6 +22,12 @@ def base():
 def home_Page():
     return render_template('home.html')
 
+@app.route('/track')
+def track_Page():
+    track_User = current_user.Username
+    items = Report.query.filter(Report.Username.like(track_User)).all()
+    return render_template('track.html',items=items)
+
 @app.route('/emergency')
 def emergency_Page():
     items = Emergency.query.all()
@@ -67,7 +73,8 @@ def report_Page():
                               Description = request.form['selected_Description'],
                               ID = ID_to_Add,
                               Date = date_to_Add,
-                              Status = status_Update)
+                              Status = status_Update,
+                              Username = current_user.Username)
         db.session.add(report_to_create)
         db.session.commit()
 
