@@ -115,7 +115,7 @@ class CreateAccScreen(QMainWindow):
                 print(widget.currentIndex())
 
             except sqlite3.IntegrityError:
-                self.error.setText("Username already exists! Please reenter a new username.")
+                self.error.setText("Username or email already exists!")
                 
 class MenuScreen(QMainWindow):
     def __init__(self, user):
@@ -218,12 +218,13 @@ class ReportScreen(QMainWindow):
             self.error.setText("Please select a reason for report!")
         else:
             self.error.setText("")
-            current = datetime.datetime.now()
-            current_date = str(current.day) + "/" + str(current.month) + "/" + str(current.year)
-            current_time = str(current.hour) + ":" + str(current.minute)
+            current_time = datetime.datetime.now()
+            current = current_time.strftime("%Y/%m/%d %H:%M:%S")
+            # current_date = str(current.day) + "/" + str(current.month) + "/" + str(current.year)
+            # current_time = str(current.hour) + ":" + str(current.minute)
             report_id =  ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-            answer_list = [report_id, description, current, self.box_chosen, area, "pending" ]
-            cur.execute('INSERT INTO report (ID,Description,Date,Category,Area,Status) VALUES (?,?,?,?,?,?)',answer_list)
+            answer_list = [report_id, description, current, self.box_chosen, area, "pending", user ]
+            cur.execute('INSERT INTO report (ID,Description,Date,Category,Area,Status,Username) VALUES (?,?,?,?,?,?,?)',answer_list)
             conn.commit()
             widget.removeWidget(self)
 
@@ -248,17 +249,18 @@ class ReportList(QMainWindow):
     def loaddata(self,user):
         con = sqlite3.connect("App/Database.db")
         cur = con.cursor()
-        query = 'SELECT * FROM report WHERE Name =\''+user+"\'"
+        query = 'SELECT * FROM report WHERE Username =\''+user+"\'"
 
         tablerow = 0
+        s = slice(0,10)
         for row in cur.execute(query):
             self.reportTable.setRowCount(tablerow+1)
             print(row)
-            self.reportTable.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[2]))
-            self.reportTable.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
-            self.reportTable.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[3]))
-            self.reportTable.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[5]))
-            self.reportTable.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[7]))
+            self.reportTable.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[1]))
+            self.reportTable.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[5]))
+            self.reportTable.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[4]))
+            self.reportTable.setItem(tablerow, 3, QtWidgets.QTableWidgetItem(row[3][s]))
+            self.reportTable.setItem(tablerow, 4, QtWidgets.QTableWidgetItem(row[6]))
 
             tablerow += 1
 
