@@ -222,8 +222,8 @@ class ReportScreen(QMainWindow):
             current_date = str(current.day) + "/" + str(current.month) + "/" + str(current.year)
             current_time = str(current.hour) + ":" + str(current.minute)
             report_id =  ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-            answer_list = [user, area, report_id, self.box_chosen, description, current_date, current_time, "pending" ]
-            cur.execute('INSERT INTO report (Name,Area,Report_ID,Reason,Description,Date,Time,Status) VALUES (?,?,?,?,?,?,?,?)',answer_list)
+            answer_list = [report_id, description, current, self.box_chosen, area, "pending" ]
+            cur.execute('INSERT INTO report (ID,Description,Date,Category,Area,Status) VALUES (?,?,?,?,?,?)',answer_list)
             conn.commit()
             widget.removeWidget(self)
 
@@ -304,7 +304,7 @@ class eLoginScreen(QMainWindow):
         else:
             conn = sqlite3.connect("App/Database.db")
             cur = conn.cursor()
-            query = 'SELECT password FROM login_info WHERE username =\''+user+"\'"
+            query = 'SELECT Password FROM user WHERE Username =\''+user+"\'"
             cur.execute(query)
             result_pass = cur.fetchone()[0]
             if result_pass is not None:
@@ -359,7 +359,7 @@ class EmergencyScreen(QMainWindow):
         self.backb.clicked.connect(self.back)
         con = sqlite3.connect("App/Database.db")
         cur = con.cursor()
-        vehicle_id = [vehicle_id[0] for vehicle_id in cur.execute("SELECT id FROM vehicle_id")]
+        vehicle_id = [vehicle_id[0] for vehicle_id in cur.execute("SELECT car_plate FROM emergency")]
         con.commit()
         con.close()
         #print(vehicle_id)
@@ -375,29 +375,34 @@ class EmergencyScreen(QMainWindow):
         if len(v_id)==0:
             self.error.setText("Please input vehicle id")
         else:
-            cur.execute('SELECT * FROM vehicle_id WHERE id =\''+v_id+"\'")
+            cur.execute('SELECT * FROM emergency WHERE car_Plate =\''+v_id+"\'")
             result = cur.fetchone()
+            print(result)
             if result is None:
                 self.error.setText("Wrong vehicle id input")
             else:
-                eid = result[0]
-                estatus = result[1]
-                if status=="ON" and estatus==1:
+                eid = result[1]
+                estatus = result[2]
+                if status=="ON" and estatus=="ON":
                     self.error.setText("The vehicle selected is already in Emergency Mode")
-                elif status=="ON" and estatus==0:
+                    print("1")
+                elif status=="ON" and estatus=="OFF":
                     print("change status")
-                    query='UPDATE vehicle_id SET emergency_status = 1 WHERE id = \''+eid+"\'"
+                    query='UPDATE emergency SET Status = "ON" WHERE car_Plate = \''+eid+"\'"
                     cur.execute(query)
                     con.commit()
                     self.error.setText("Successfully turned vehicle "+eid+" to Emergency Mode")
-                elif status=="OFF" and estatus==0:
+                    print("2")
+                elif status=="OFF" and estatus=="OFF":
                     self.error.setText("The vehicle selected is already in Normal Mode")
-                elif status=="OFF" and estatus==1:
+                    print("3")
+                elif status=="OFF" and estatus=="ON":
                     print("change status")
-                    query='UPDATE vehicle_id SET emergency_status = 0 WHERE id = \''+eid+"\'"
+                    query='UPDATE emergency SET Status = "OFF" WHERE car_Plate = \''+eid+"\'"
                     cur.execute(query)
                     con.commit()
                     self.error.setText("Successfully turned vehicle "+eid+" to Normal Mode")
+                    print("4")
 
 
 
