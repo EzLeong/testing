@@ -11,7 +11,7 @@ import random, string
 class WelcomeScreen(QMainWindow):
     def __init__(self):
         super(WelcomeScreen,self).__init__()
-        loadUi("Native_App\welcomescreen.ui",self)
+        loadUi("Native_App/welcomescreen.ui",self)
         self.roaduserb.clicked.connect(self.gotologin)
         self.adminb.clicked.connect(self.gotoelogin)
 
@@ -31,7 +31,7 @@ class WelcomeScreen(QMainWindow):
 class LoginScreen(QMainWindow):
     def __init__(self):
         super(LoginScreen,self).__init__()
-        loadUi("login.ui",self)
+        loadUi("Native_App/login.ui",self)
         self.passwordfield.setEchoMode(QtWidgets.QLineEdit.Password)
         self.login.clicked.connect(self.loginfunction)
         self.signup.clicked.connect(self.gotocreate)
@@ -61,7 +61,7 @@ class LoginScreen(QMainWindow):
             self.error.setText("Please input all fields")
 
         else:
-            conn = sqlite3.connect("db/Database.db")
+            conn = sqlite3.connect("App/Database.db")
             cur = conn.cursor()
             query = 'SELECT Password FROM user WHERE Username =\''+user+"\'"
             cur.execute(query)
@@ -81,7 +81,7 @@ class LoginScreen(QMainWindow):
 class CreateAccScreen(QMainWindow):
     def __init__(self):
         super(CreateAccScreen,self).__init__()
-        loadUi("createacc.ui",self)
+        loadUi("Native_App/createacc.ui",self)
         self.passwordfield.setEchoMode(QtWidgets.QLineEdit.Password)
         self.passwordfield_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signupb.clicked.connect(self.signup)
@@ -96,7 +96,7 @@ class CreateAccScreen(QMainWindow):
         passw1 = self.passwordfield.text()
         passw2 = self.passwordfield_2.text()
         email = self.emailfield.text()
-        conn = sqlite3.connect("db/Database.db")
+        conn = sqlite3.connect("App/Database.db")
         cur = conn.cursor()
         
         if len(user)==0 or len(passw1)==0 or len(passw2)==0:
@@ -120,7 +120,7 @@ class CreateAccScreen(QMainWindow):
 class MenuScreen(QMainWindow):
     def __init__(self, user):
         super(MenuScreen,self).__init__()
-        loadUi("menupage.ui",self)
+        loadUi("Native_App/menupage.ui",self)
         # self.user = user
         # print(user)
         self.displayname.setText(user)
@@ -147,7 +147,7 @@ class MenuScreen(QMainWindow):
 class ReportScreen(QMainWindow):
     def __init__(self,user):
         super(ReportScreen,self).__init__()
-        loadUi("reportscreen.ui",self)
+        loadUi("Native_App/reportscreen.ui",self)
         self.displayname.setText(user)
         self.breakdown.stateChanged.connect(self.uncheck)
         self.accident.stateChanged.connect(self.uncheck)
@@ -209,7 +209,7 @@ class ReportScreen(QMainWindow):
         description = self.descriptiontext.toPlainText()
         print(checkbox_list)
 
-        conn = sqlite3.connect("db/Database.db")
+        conn = sqlite3.connect("App/Database.db")
         cur = conn.cursor()
 
         if area == "--Select Area--":
@@ -230,7 +230,7 @@ class ReportScreen(QMainWindow):
 class ReportList(QMainWindow):
     def __init__(self, user):
         super(ReportList,self).__init__()
-        loadUi("reportlist.ui",self)
+        loadUi("Native_App/reportlist.ui",self)
         self.reportTable.setColumnWidth(0,75)
         self.reportTable.setColumnWidth(1,100)
         self.reportTable.setColumnWidth(2,100)
@@ -246,7 +246,7 @@ class ReportList(QMainWindow):
         widget.removeWidget(self)
 
     def loaddata(self,user):
-        con = sqlite3.connect("db/Database.db")
+        con = sqlite3.connect("App/Database.db")
         cur = con.cursor()
         query = 'SELECT * FROM report WHERE Name =\''+user+"\'"
 
@@ -265,7 +265,7 @@ class ReportList(QMainWindow):
 class TrafficGraph(QMainWindow):
     def __init__(self,user):
         super(TrafficGraph,self).__init__()
-        loadUi("trafficgraph.ui",self)
+        loadUi("Native_App/trafficgraph.ui",self)
         self.backb.clicked.connect(self.back)
         hour = [1,2,3,4,5,6,7,8,9,10]
         perc = [30,32,34,32,33,31,29,32,35,45]
@@ -281,7 +281,7 @@ class TrafficGraph(QMainWindow):
 class eLoginScreen(QMainWindow):
     def __init__(self):
         super(eLoginScreen,self).__init__()
-        loadUi("emergencylogin.ui",self)
+        loadUi("Native_App/emergencylogin.ui",self)
         self.passwordfield.setEchoMode(QtWidgets.QLineEdit.Password)
         self.login.clicked.connect(self.loginfunction)
         self.backb.clicked.connect(self.back)
@@ -302,7 +302,7 @@ class eLoginScreen(QMainWindow):
             self.error.setText("Please input all fields")
 
         else:
-            conn = sqlite3.connect("db/Database.db")
+            conn = sqlite3.connect("App/Database.db")
             cur = conn.cursor()
             query = 'SELECT password FROM login_info WHERE username =\''+user+"\'"
             cur.execute(query)
@@ -325,7 +325,7 @@ class eLoginScreen(QMainWindow):
 class eMenuScreen(QMainWindow):
     def __init__(self,user):
         super(eMenuScreen,self).__init__()
-        loadUi("emergencymenu.ui",self)
+        loadUi("Native_App/emergencymenu.ui",self)
         self.displayname.setText(user)
         self.reportb.clicked.connect(lambda: self.gotoreport(user))
         self.backb.clicked.connect(self.back)
@@ -354,10 +354,10 @@ class eMenuScreen(QMainWindow):
 class EmergencyScreen(QMainWindow):
     def __init__(self):
         super(EmergencyScreen,self).__init__()
-        loadUi("emergency.ui",self)
+        loadUi("Native_App/emergency.ui",self)
         #self.additemsintobox
         self.backb.clicked.connect(self.back)
-        con = sqlite3.connect("db/Database.db")
+        con = sqlite3.connect("App/Database.db")
         cur = con.cursor()
         vehicle_id = [vehicle_id[0] for vehicle_id in cur.execute("SELECT id FROM vehicle_id")]
         con.commit()
@@ -370,7 +370,7 @@ class EmergencyScreen(QMainWindow):
 
     def check(self,status):
         v_id = self.vehicleidfield.text()
-        con = sqlite3.connect("db/Database.db")
+        con = sqlite3.connect("App/Database.db")
         cur = con.cursor()
         if len(v_id)==0:
             self.error.setText("Please input vehicle id")

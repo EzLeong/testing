@@ -71,15 +71,22 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>145</x>
-       <y>550</y>
+       <y>590</y>
        <width>161</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:20px;
-font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 127);
+	font: 11pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
      </property>
      <property name="text">
       <string>Log In</string>
@@ -98,10 +105,16 @@ background-color: rgb(255, 255, 127);</string>
       <string notr="true">background-color:rgba(0,0,0,0);
 color: rgb(255, 255, 255);
 font: 12pt &quot;MS Shell Dlg 2&quot;;
-</string>
+QLineEdit {
+	border: 2px solid #803CE0
+}
+
+QLineEdit:focus {
+	border: 2px solid #FBAD25
+}</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="passwordfield">
+    <widget class="QLineEdit" name="emailfield">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -147,7 +160,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
-      <string>Password:</string>
+      <string>Email:</string>
      </property>
     </widget>
     <widget class="QLabel" name="error">
@@ -171,7 +184,7 @@ color: rgb(255, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>145</x>
-       <y>610</y>
+       <y>650</y>
        <width>161</width>
        <height>41</height>
       </rect>
@@ -201,6 +214,38 @@ background-color: rgb(255, 255, 127);</string>
      </property>
      <property name="text">
       <string>Back</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>490</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Password:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="passwordfield">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>520</y>
+       <width>351</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(0,0,0,0);
+color: rgb(255, 255, 255);
+font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
     </widget>
    </widget>
