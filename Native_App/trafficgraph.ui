@@ -62,41 +62,96 @@ color: rgb(255, 255, 255);</string>
 border-radius:20px;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="l7d">
+    <widget class="QComboBox" name="daysbox">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>130</y>
-       <width>131</width>
+       <x>240</x>
+       <y>140</y>
+       <width>181</width>
        <height>31</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border-radius:10px;
-font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
      </property>
-     <property name="text">
-      <string>Last 7 days</string>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
      </property>
+     <item>
+      <property name="text">
+       <string>Today</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1 day ago</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2 days ago</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3 days ago</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4 days ago</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5 days ago</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6 days ago</string>
+      </property>
+     </item>
     </widget>
-    <widget class="QPushButton" name="l7d_2">
+    <widget class="QComboBox" name="areabox">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>130</y>
-       <width>131</width>
+       <x>30</x>
+       <y>140</y>
+       <width>181</width>
        <height>31</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border-radius:10px;
-font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
      </property>
-     <property name="text">
-      <string>Last 48 hours</string>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
      </property>
+     <item>
+      <property name="text">
+       <string>--Choose an area--</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Jalan Templer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Jalan Gasing</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Jalan PJ</string>
+      </property>
+     </item>
     </widget>
    </widget>
    <widget class="QPushButton" name="backb">

@@ -4,30 +4,41 @@ import pyqtgraph as pg
 import sys
 import sqlite3
 import os
-import csv
+import datetime
 
 class MainWindow(QtWidgets.QMainWindow):
 
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
-
-        #Load the UI Page
         uic.loadUi('trafficgraph.ui', self)
+        current_date = datetime.datetime.now()
+        date_today = str(current_date.day) + "/" + str(current_date.month) + "/" + str(current_date.year)
+        # area = self.areabox.currentIndex()
+        self.plotting(date_today)
+        self.areabox.currentIndexChanged.connect(lambda: self.selectionchange(current_date))
+        self.daysbox.currentIndexChanged.connect(lambda: self.selectionchange(current_date))
 
+    def plotting (self,date):
         con = sqlite3.connect("db/traffic_db.db")
-        cur = con.cursor() 
-        cur.execute("select * from traffic_data")
-        with open("traffic_data.csv", "w") as csv_file:
-            csv_writer = csv.writer(csv_file)
-            csv_writer.writerow([i[0] for i in cur.description])
-            csv_writer.writerows(cur)
-        
-        #dirpath = os.getcwd() + "/traffic_data.csv"
-        #print "Data exported Successfully into {}".format(dirpath)
+        cur = con.cursor()
+        area = self.areabox.currentIndex()
+        if area == 1:
+            cur.execute('SELECT time,jalan_templer FROM traffic_data WHERE Date=\''+date+"\'")
+        elif area == 2:
+            cur.execute('SELECT time,jalan_gasing FROM traffic_data WHERE Date=\''+date+"\'")
+        elif area == 3:
+            cur.execute('SELECT time,jalan_pj FROM traffic_data WHERE Date=\''+date+"\'")
+        data = cur.fetchall()
+        x=[]
+        y=[]
+        for i in range (0,len(data)):
+            if data[i][0] == "12am" or data[i][0] == "6am" or data[i][0] == "12pm" or data[i][0] == "6pm" or data[i][0] == "11pm" or i == len(data)-1:
+                x.append(data[i][0])
+            else:
+                x.append("")
+            y.append(data[i][1])
 
-        x = ['12am','','','','','','6am','','','','','','12pm','','','','','','6pm','','','','','11pm']
         xdict = dict(enumerate(x))
-        y = [5,3,0,0,0,0,6,59,86,82,48,31,35,40,35,35,38,61,89,88,54,25,15,10]
         xax = self.graphWidget.getAxis('bottom')
         yax = self.graphWidget.getAxis('left')
         xax.setTicks([xdict.items()])
@@ -37,9 +48,33 @@ class MainWindow(QtWidgets.QMainWindow):
         xax.setTextPen((0,0,0),width=2)
         yax.setPen((0,0,0),width=2)
         yax.setTextPen((0,0,0),width=2)
+        self.graphWidget.setYRange(0,100)
         pen = pg.mkPen(color=(255,0,0), width=2)
         self.graphWidget.plot(list(xdict.keys()), y, pen=pen, symbol='o',symbolPen=('k'),symbolBrush=((255,255,255)))
         self.graphWidget.showGrid(y=True)
+        xdict = dict(enumerate(x))
+        xax = self.graphWidget.getAxis('bottom')
+        yax = self.graphWidget.getAxis('left')
+        xax.setTicks([xdict.items()])
+
+        self.graphWidget.setBackground(QtGui.QColor(0,255,255,0))
+        xax.setPen((0,0,0),width=2)
+        xax.setTextPen((0,0,0),width=2)
+        yax.setPen((0,0,0),width=2)
+        yax.setTextPen((0,0,0),width=2)
+        self.graphWidget.setYRange(0,100)
+        pen = pg.mkPen(color=(255,0,0), width=2)
+        self.graphWidget.plot(list(xdict.keys()), y, pen=pen, symbol='o',symbolPen=('k'),symbolBrush=((255,255,255)))
+        self.graphWidget.showGrid(y=True)
+
+    def selectionchange(self,current_date):
+        selected = self.daysbox.currentIndex()
+        print(selected)
+        days = datetime.timedelta(selected)
+        current = current_date - days
+        date = str(current.day) + "/" + str(current.month) + "/" + str(current.year)
+        self.graphWidget.clear()
+        self.plotting(date)
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
