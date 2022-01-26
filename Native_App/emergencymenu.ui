@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="bg" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>450</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#bg{
+background-color:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.563, stop:0 rgba(170, 0, 0, 255), stop:1 rgba(255, 255, 255, 255))}
+</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>120</y>
+       <width>450</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Hello,</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>260</y>
+       <width>450</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+color:rgb(255, 255, 255);
+background-color: rgba(0, 0, 0, 100);</string>
+     </property>
+     <property name="text">
+      <string>Please select a feature.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="trafficb">
+     <property name="geometry">
+      <rect>
+       <x>135</x>
+       <y>340</y>
+       <width>180</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 255);
+	font: 11pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string>Current Traffic Situation</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="displayname">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>180</y>
+       <width>450</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Admin</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="reportb">
+     <property name="geometry">
+      <rect>
+       <x>135</x>
+       <y>440</y>
+       <width>180</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 255);
+	font: 11pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string>File a report</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="emodeb">
+     <property name="geometry">
+      <rect>
+       <x>135</x>
+       <y>540</y>
+       <width>180</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 255);
+	font: 11pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string>Emergency Mode</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>-40</y>
+       <width>921</width>
+       <height>841</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../App/static/british-emergency.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_5</zorder>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>trafficb</zorder>
+    <zorder>displayname</zorder>
+    <zorder>reportb</zorder>
+    <zorder>emodeb</zorder>
+   </widget>
+   <widget class="QPushButton" name="backb">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-radius:20px;
+font: 11pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 255, 127);
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>450</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

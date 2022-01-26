@@ -44,6 +44,7 @@ class Report(db.Model):
     Category = db.Column(db.String(), nullable=False)
     Area = db.Column(db.String(), nullable=False)
     Status = db.Column(db.String(), nullable=False)
+    Username = db.Column(db.String(), nullable=False)
 
 class Final(db.Model):
     No = db.Column(db.Integer(), nullable=False, unique=True, primary_key=True)
@@ -53,6 +54,7 @@ class Final(db.Model):
     Category = db.Column(db.String(), nullable=False)
     Area = db.Column(db.String(), nullable=False)
     Status = db.Column(db.String(), nullable=False)
+    Username = db.Column(db.String(), nullable=False)
 
     def __repr__(self):
         return f'Item {self.ID}'

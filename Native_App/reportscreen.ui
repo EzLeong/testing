@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="bg" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>450</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#bg{
+background-color:qlineargradient(spread:pad, x1:0, y1:0.551, x2:1, y2:0.511, stop:0 rgba(0, 0, 127, 255), stop:1 rgba(85, 170, 255, 255))}
+</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>450</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Hello,</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>300</y>
+       <width>450</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;color:rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>Please describe your reason for report:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="displayname">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>140</y>
+       <width>450</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Wee</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="submitb">
+     <property name="geometry">
+      <rect>
+       <x>285</x>
+       <y>640</y>
+       <width>120</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 255);
+	font: 14pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="breakdown">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>350</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+color:rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Traffic Light Breakdown</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="accident">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>390</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;color:rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>Accident</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="potholes">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>430</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;color:rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>Potholes</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="descriptiontext">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>540</y>
+       <width>360</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(255,255,255,150);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>200</y>
+       <width>450</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+color:rgb(255, 255, 255);
+background-color: rgba(0, 0, 0, 180);</string>
+     </property>
+     <property name="text">
+      <string>Please select your area:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="areabox">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>260</y>
+       <width>360</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>--Select Area--</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>North South Expressway (PLUS)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Second Link Expressway</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shah Alam Expressway</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>North South Expressway Central Link</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="error">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>690</y>
+       <width>450</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>515</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Description:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="backb">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border-radius:20px;
+font: 11pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 255, 127);
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="others">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>470</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;color:rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>Others</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="reportlist">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>30</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 255);
+	font: 11pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string>View Report List</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>-190</x>
+       <y>0</y>
+       <width>1081</width>
+       <height>781</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../App/static/07PlusLebuhraya_1528287033.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_5</zorder>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>displayname</zorder>
+    <zorder>submitb</zorder>
+    <zorder>breakdown</zorder>
+    <zorder>accident</zorder>
+    <zorder>potholes</zorder>
+    <zorder>descriptiontext</zorder>
+    <zorder>label_3</zorder>
+    <zorder>areabox</zorder>
+    <zorder>error</zorder>
+    <zorder>label_4</zorder>
+    <zorder>backb</zorder>
+    <zorder>others</zorder>
+    <zorder>reportlist</zorder>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>450</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
