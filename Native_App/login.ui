@@ -239,7 +239,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLabel" name="Background">
      <property name="geometry">
       <rect>
-       <x>-230</x>
+       <x>-220</x>
        <y>-10</y>
        <width>881</width>
        <height>771</height>
@@ -249,7 +249,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../../../Downloads/istockphoto-1168877485-170667a.jpg</pixmap>
+      <pixmap>../App/static/istockphoto-1168877485-170667a.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>

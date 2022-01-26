@@ -290,6 +290,38 @@ border-radius:20px;</string>
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>451</width>
+       <height>781</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../App/static/5211331c3267926037327cb79eab9bd8.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_2</zorder>
+    <zorder>label</zorder>
+    <zorder>graphWidget</zorder>
+    <zorder>daysbox</zorder>
+    <zorder>areabox</zorder>
+    <zorder>arealabel</zorder>
+    <zorder>datelabel</zorder>
+    <zorder>avgtd</zorder>
+    <zorder>avgtd2</zorder>
+    <zorder>peaktd</zorder>
+    <zorder>peaktd2</zorder>
+    <zorder>currenttd</zorder>
+    <zorder>currenttd2</zorder>
    </widget>
    <widget class="QPushButton" name="backb">
     <property name="geometry">

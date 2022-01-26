@@ -183,7 +183,7 @@ QPushButton:hover{
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../../../Downloads/british-emergency.jpg</pixmap>
+      <pixmap>../App/static/british-emergency.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
