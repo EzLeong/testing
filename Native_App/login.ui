@@ -240,9 +240,9 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      <property name="geometry">
       <rect>
        <x>-220</x>
-       <y>-10</y>
+       <y>0</y>
        <width>881</width>
-       <height>771</height>
+       <height>781</height>
       </rect>
      </property>
      <property name="text">
@@ -274,7 +274,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>450</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
