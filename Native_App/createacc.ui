@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>450</width>
-    <height>800</height>
+    <height>792</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -80,14 +80,14 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>260</y>
+       <y>290</y>
        <width>351</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgba(0,0,0,0);
-color: rgb(255, 255, 255);
+      <string notr="true">background-color: rgba(143, 143, 143, 119);
+
 font: 12pt &quot;MS Shell Dlg 2&quot;;
 </string>
      </property>
@@ -96,14 +96,14 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>440</y>
+       <y>470</y>
        <width>351</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgba(0,0,0,0);
-color: rgb(255, 255, 255);
+      <string notr="true">background-color: rgba(143, 143, 143, 119);
+color:rgb(0, 0, 0);
 font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
     </widget>
@@ -111,14 +111,14 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>230</y>
+       <y>260</y>
        <width>91</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
       <string>Username:</string>
@@ -128,14 +128,14 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>410</y>
+       <y>440</y>
        <width>91</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
       <string>Password:</string>
@@ -145,15 +145,21 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>145</x>
-       <y>640</y>
+       <y>650</y>
        <width>161</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:20px;
+      <string notr="true">QPushButton{
+border-radius:20px;
+background-color: rgb(0, 0, 207);
+color: rgb(255, 255, 255);
 font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+}
+QPushButton:hover{
+	background-color: rgb(0, 17, 255);
+}</string>
      </property>
      <property name="text">
       <string>Sign Up</string>
@@ -163,14 +169,14 @@ background-color: rgb(255, 255, 127);</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>530</y>
+       <y>560</y>
        <width>351</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgba(0,0,0,0);
-color: rgb(255, 255, 255);
+      <string notr="true">background-color: rgba(143, 143, 143, 119);
+color: rgb(0, 0, 0);
 font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
     </widget>
@@ -178,14 +184,14 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>500</y>
+       <y>530</y>
        <width>141</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+color: rgb(0, 0, 0)</string>
      </property>
      <property name="text">
       <string>Confirm Password:</string>
@@ -218,9 +224,16 @@ color: rgb(255, 0, 0);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:20px;
+      <string notr="true">QPushButton{
+border-radius:20px;
 font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+background-color: rgb(255, 255, 127);
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
      </property>
      <property name="text">
       <string>Back</string>
@@ -230,14 +243,14 @@ background-color: rgb(255, 255, 127);</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>350</y>
+       <y>380</y>
        <width>351</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgba(0,0,0,0);
-color: rgb(255, 255, 255);
+      <string notr="true">background-color: rgba(143, 143, 143, 119);
+color:rgb(0, 0, 0);
 font: 12pt &quot;MS Shell Dlg 2&quot;;
 </string>
      </property>
@@ -246,19 +259,76 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>320</y>
+       <y>350</y>
        <width>91</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
       <string>Email:</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>451</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../../../../Downloads/istockphoto-1168877485-170667a.jpg</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>-200</x>
+       <y>230</y>
+       <width>651</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 20px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../../../../Pictures/White_Background_generated.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_8</zorder>
+    <zorder>label_7</zorder>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>usernamefield</zorder>
+    <zorder>passwordfield</zorder>
+    <zorder>label_3</zorder>
+    <zorder>label_4</zorder>
+    <zorder>signupb</zorder>
+    <zorder>passwordfield_2</zorder>
+    <zorder>label_5</zorder>
+    <zorder>error</zorder>
+    <zorder>backb</zorder>
+    <zorder>emailfield</zorder>
+    <zorder>label_6</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -267,7 +337,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>450</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

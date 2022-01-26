@@ -103,9 +103,16 @@ color: rgb(255, 255, 255);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:20px;
-font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 255);
+	font: 14pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
      </property>
      <property name="text">
       <string>Submit</string>
@@ -121,7 +128,8 @@ background-color: rgb(255, 255, 127);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;color:rgb(255, 255, 255)</string>
+      <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+color:rgb(255, 255, 255);</string>
      </property>
      <property name="text">
       <string>Traffic Light Breakdown</string>
@@ -182,7 +190,9 @@ background-color: rgb(255, 255, 127);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;color:rgb(255, 255, 255)</string>
+      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+color:rgb(255, 255, 255);
+background-color: rgba(0, 0, 0, 180);</string>
      </property>
      <property name="text">
       <string>Please select your area:</string>
@@ -277,9 +287,16 @@ color: rgb(255, 255, 255);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:20px;
+      <string notr="true">QPushButton{
+border-radius:20px;
 font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+background-color: rgb(255, 255, 127);
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
      </property>
      <property name="text">
       <string>Back</string>
@@ -311,15 +328,56 @@ background-color: rgb(255, 255, 127);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:20px;
-background-color: rgb(255, 255, 255);
-font: 11pt &quot;MS Shell Dlg 2&quot;;
-</string>
+      <string notr="true">QPushButton{
+	border-radius:20px;
+	background-color: rgb(255, 255, 255);
+	font: 11pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
      </property>
      <property name="text">
       <string>View Report List</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>-190</x>
+       <y>0</y>
+       <width>1081</width>
+       <height>761</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../../../../Downloads/07PlusLebuhraya_1528287033.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_5</zorder>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>displayname</zorder>
+    <zorder>submitb</zorder>
+    <zorder>breakdown</zorder>
+    <zorder>accident</zorder>
+    <zorder>potholes</zorder>
+    <zorder>descriptiontext</zorder>
+    <zorder>label_3</zorder>
+    <zorder>areabox</zorder>
+    <zorder>error</zorder>
+    <zorder>label_4</zorder>
+    <zorder>backb</zorder>
+    <zorder>others</zorder>
+    <zorder>reportlist</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -328,7 +386,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
      <x>0</x>
      <y>0</y>
      <width>450</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

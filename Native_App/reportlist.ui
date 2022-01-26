@@ -58,9 +58,16 @@ color: rgb(255, 255, 255);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:20px;
+      <string notr="true">QPushButton{
+border-radius:20px;
 font: 11pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 255, 127);</string>
+background-color: rgb(255, 255, 127);
+}
+
+QPushButton:hover{
+	
+	background-color: rgb(255, 255, 0);
+}</string>
      </property>
      <property name="text">
       <string>Back</string>
@@ -111,6 +118,29 @@ background-color: rgb(255, 255, 127);</string>
       </property>
      </column>
     </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>-180</x>
+       <y>0</y>
+       <width>1081</width>
+       <height>761</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../../../../Downloads/07PlusLebuhraya_1528287033.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_5</zorder>
+    <zorder>label</zorder>
+    <zorder>backb</zorder>
+    <zorder>reportTable</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -119,7 +149,7 @@ background-color: rgb(255, 255, 127);</string>
      <x>0</x>
      <y>0</y>
      <width>450</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
