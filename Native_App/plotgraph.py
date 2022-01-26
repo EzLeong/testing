@@ -1,3 +1,4 @@
+from queue import Empty
 from PyQt5 import QtWidgets, uic, QtGui
 from pyqtgraph import PlotWidget
 import pyqtgraph as pg
@@ -31,13 +32,14 @@ class MainWindow(QtWidgets.QMainWindow):
         data = cur.fetchall()
         x=[]
         y=[]
+       
         for i in range (0,len(data)):
             if data[i][0] == "12am" or data[i][0] == "6am" or data[i][0] == "12pm" or data[i][0] == "6pm" or data[i][0] == "11pm" or i == len(data)-1:
                 x.append(data[i][0])
             else:
                 x.append("")
             y.append(data[i][1])
-
+        
         xdict = dict(enumerate(x))
         xax = self.graphWidget.getAxis('bottom')
         yax = self.graphWidget.getAxis('left')
@@ -66,6 +68,25 @@ class MainWindow(QtWidgets.QMainWindow):
         pen = pg.mkPen(color=(255,0,0), width=2)
         self.graphWidget.plot(list(xdict.keys()), y, pen=pen, symbol='o',symbolPen=('k'),symbolBrush=((255,255,255)))
         self.graphWidget.showGrid(y=True)
+
+        if len(y) != 0:
+            if self.daysbox.currentIndex() == 0:
+                ylast = y[-1]
+                self.currenttd.setText("Current Traffic Density:  ")
+                self.currenttd2.setText(str(ylast)+"%")
+            else:
+                self.currenttd.setText("")
+                self.currenttd2.setText("")
+
+            yavg = sum(y)/len(y)
+            self.avgtd2.setText(str(round(yavg,2))+"%")
+            
+            ymax = max(y)
+            ymaxidx = y.index(ymax)
+            if ymaxidx >=12:
+                self.peaktd2.setText(str(ymax)+"%"+" at "+str(ymaxidx%12)+"pm")
+            else:
+                self.peaktd2.setText(str(ymax)+"%"+" at "+str(ymaxidx)+"am")
 
     def selectionchange(self,current_date):
         selected = self.daysbox.currentIndex()

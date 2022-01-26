@@ -1,7 +1,7 @@
 import sqlite3
 import datetime
 
-con = sqlite3.connect("db/traffic_db.db")
+con = sqlite3.connect("App/Database.db")
 cur = con.cursor()
 
 # query = '''CREATE TABLE TRAFFIC_DATA(

@@ -1,8 +1,9 @@
 import sys
 from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+import pyqtgraph as pg
 import sqlite3
 import datetime
 import random, string
@@ -269,15 +270,93 @@ class TrafficGraph(QMainWindow):
         super(TrafficGraph,self).__init__()
         loadUi("Native_App/trafficgraph.ui",self)
         self.backb.clicked.connect(self.back)
-        hour = [1,2,3,4,5,6,7,8,9,10]
-        perc = [30,32,34,32,33,31,29,32,35,45]
-        self.plot(hour, perc)
-
-    def plot(self, x, y):
-        self.graphWidget.plot(x, y)
+        current_date = datetime.datetime.now()
+        date_today = str(current_date.day) + "/" + str(current_date.month) + "/" + str(current_date.year)
+        # area = self.areabox.currentIndex()
+        self.plotting(date_today)
+        self.areabox.currentIndexChanged.connect(lambda: self.selectionchange(current_date))
+        self.daysbox.currentIndexChanged.connect(lambda: self.selectionchange(current_date))
 
     def back(self):
         widget.removeWidget(self)
+
+    def plotting (self,date):
+        con = sqlite3.connect("App/Database.db")
+        cur = con.cursor()
+        area = self.areabox.currentIndex()
+        if area == 1:
+            cur.execute('SELECT time,jalan_templer FROM traffic_data WHERE Date=\''+date+"\'")
+        elif area == 2:
+            cur.execute('SELECT time,jalan_gasing FROM traffic_data WHERE Date=\''+date+"\'")
+        elif area == 3:
+            cur.execute('SELECT time,jalan_pj FROM traffic_data WHERE Date=\''+date+"\'")
+        data = cur.fetchall()
+        x=[]
+        y=[]
+       
+        for i in range (0,len(data)):
+            if data[i][0] == "12am" or data[i][0] == "6am" or data[i][0] == "12pm" or data[i][0] == "6pm" or data[i][0] == "11pm" or i == len(data)-1:
+                x.append(data[i][0])
+            else:
+                x.append("")
+            y.append(data[i][1])
+        
+        xdict = dict(enumerate(x))
+        xax = self.graphWidget.getAxis('bottom')
+        yax = self.graphWidget.getAxis('left')
+        xax.setTicks([xdict.items()])
+
+        self.graphWidget.setBackground(QtGui.QColor(0,255,255,0))
+        xax.setPen((0,0,0),width=2)
+        xax.setTextPen((0,0,0),width=2)
+        yax.setPen((0,0,0),width=2)
+        yax.setTextPen((0,0,0),width=2)
+        self.graphWidget.setYRange(0,100)
+        pen = pg.mkPen(color=(255,0,0), width=2)
+        self.graphWidget.plot(list(xdict.keys()), y, pen=pen, symbol='o',symbolPen=('k'),symbolBrush=((255,255,255)))
+        self.graphWidget.showGrid(y=True)
+        xdict = dict(enumerate(x))
+        xax = self.graphWidget.getAxis('bottom')
+        yax = self.graphWidget.getAxis('left')
+        xax.setTicks([xdict.items()])
+
+        self.graphWidget.setBackground(QtGui.QColor(0,255,255,0))
+        xax.setPen((0,0,0),width=2)
+        xax.setTextPen((0,0,0),width=2)
+        yax.setPen((0,0,0),width=2)
+        yax.setTextPen((0,0,0),width=2)
+        self.graphWidget.setYRange(0,100)
+        pen = pg.mkPen(color=(255,0,0), width=2)
+        self.graphWidget.plot(list(xdict.keys()), y, pen=pen, symbol='o',symbolPen=('k'),symbolBrush=((255,255,255)))
+        self.graphWidget.showGrid(y=True)
+
+        if len(y) != 0:
+            if self.daysbox.currentIndex() == 0:
+                ylast = y[-1]
+                self.currenttd.setText("Current Traffic Density:  ")
+                self.currenttd2.setText(str(ylast)+"%")
+            else:
+                self.currenttd.setText("")
+                self.currenttd2.setText("")
+
+            yavg = sum(y)/len(y)
+            self.avgtd2.setText(str(round(yavg,2))+"%")
+            
+            ymax = max(y)
+            ymaxidx = y.index(ymax)
+            if ymaxidx >=12:
+                self.peaktd2.setText(str(ymax)+"%"+" at "+str(ymaxidx%12)+"pm")
+            else:
+                self.peaktd2.setText(str(ymax)+"%"+" at "+str(ymaxidx)+"am")
+
+    def selectionchange(self,current_date):
+        selected = self.daysbox.currentIndex()
+        print(selected)
+        days = datetime.timedelta(selected)
+        current = current_date - days
+        date = str(current.day) + "/" + str(current.month) + "/" + str(current.year)
+        self.graphWidget.clear()
+        self.plotting(date)
 
 #admin interface
 class eLoginScreen(QMainWindow):
