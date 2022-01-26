@@ -212,6 +212,7 @@ def update_Item(No):
     return render_template('admin.html',items=items, form=form)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 @app.route('/graph', methods=['GET','POST'])
@@ -221,6 +222,8 @@ def graph():
 
     return render_template('graph.html', items=items, form=form)
 =======
+=======
+>>>>>>> Stashed changes
 @app.route('/graph')
 def graph():
     data = [
@@ -232,5 +235,9 @@ def graph():
     values = [row[1] for row in data]
 
 
+<<<<<<< Updated upstream
+    return render_template ('graph.html', labels=labels, values = values)
+>>>>>>> Stashed changes
+=======
     return render_template ('graph.html', labels=labels, values = values)
 >>>>>>> Stashed changes
