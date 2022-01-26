@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Smart Traffic - Report
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="col-4 mt-5">
+    <h2 class="text-center"> File A Report </h2>
+    <br>
+    <form class="container" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-floating">
+            <select class="form-select align-middle text-center" aria-label="Floating label select example" name="selected_Area", id="selected_Area">
+                <option selected>Area</option>
+                <option value="Johor">Johor</option>
+                <option value="Kedah">Kedah</option>
+                <option value="Kuala Lumpur">Kuala Lumpur</option>
+                <option value="Kelantan">Kelantan</option>
+                <option value="Labuan">Labuan</option>
+                <option value="Melaka">Melaka</option>
+                <option value="Negeri Sembilan">Negeri Sembilan</option>
+                <option value="Pahang">Pahang</option>
+                <option value="Perak">Perak</option>
+                <option value="Perlis">Perlis</option>
+                <option value="Pulau Pinang">Pulau Pinang</option>
+                <option value="Perak">Perak</option>
+                <option value="Perlis">Perlis</option>
+                <option value="Sabah">Sabah</option>
+                <option value="Sarawak">Sarawak</option>
+                <option value="Selangor">Selangor</option>
+                <option value="Terengganu">Terengganu</option>
+                <option value="Wilayah Persekutuan">Wilayah Persekutuan</option>
+            </select>
+            <label style="color:black" for="selected_Area">Choose an Area</label>
+        </div>
+        <br>
+        <div class="text-center">
+        {{form.Submit(class="btn btn-primary btn-block btn-lg")}}
+        </div>
+    </form>
+</div>
+{% endblock %}

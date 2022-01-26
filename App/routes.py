@@ -211,3 +211,11 @@ def update_Item(No):
 
     return render_template('admin.html',items=items, form=form)
 
+
+
+@app.route('/graph', methods=['GET','POST'])
+def graph():
+    items = Report.query.all()
+    form = ReportForm()
+
+    return render_template('graph.html', items=items, form=form)
